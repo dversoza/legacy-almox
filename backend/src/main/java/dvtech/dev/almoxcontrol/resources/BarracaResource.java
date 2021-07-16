@@ -1,9 +1,10 @@
-package dvtech.dev.almoxcontrol;
+package dvtech.dev.almoxcontrol.resources;
 
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import dvtech.dev.almoxcontrol.services.BarracaService;
@@ -43,6 +44,7 @@ public class BarracaResource {
         return new ResponseEntity<>(updatedBarraca, HttpStatus.OK);
     }
 
+    @Transactional
     @DeleteMapping("/excluir/{idBarraca}")
     public ResponseEntity<?> deleteBarraca(
             @PathVariable("idBarraca") Integer idBarraca) {

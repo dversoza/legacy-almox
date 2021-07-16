@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dvtech.dev.almoxcontrol.exceptions.BarracaNotFoundException;
 import dvtech.dev.almoxcontrol.models.Barraca;
 import dvtech.dev.almoxcontrol.repos.BarracaRepo;
-import exceptions.BarracaNotFoundException;
 
 @Service
 public class BarracaService {
