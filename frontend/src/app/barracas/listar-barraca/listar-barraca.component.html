@@ -1,0 +1,20 @@
+<h1>Barracas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Responsável</th>
+      <th>Contato</th>
+      <th>Criar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let barraca of barracas">
+      <td>{{ barraca.nome }}</td>
+      <td>{{ barraca.responsavel }}</td>
+      <td>{{ barraca.contato }}</td>
+      <td>Editar || Excluir</td>
+    </tr>
+  </tbody>
+</table>
