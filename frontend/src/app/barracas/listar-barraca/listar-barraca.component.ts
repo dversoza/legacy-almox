@@ -13,7 +13,9 @@ export class ListarBarracaComponent implements OnInit {
 
   constructor(private barracaService: BarracaService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getBarracas();
+  }
 
   public getBarracas(): void {
     this.barracaService.getBarracas().subscribe(
@@ -24,5 +26,22 @@ export class ListarBarracaComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  public excluir($event: any, barraca: Barraca) {
+    $event.preventDefault();
+    if (
+      confirm(`Tem certeza que deseja excluir a barraca ${barraca.nome}?`) &&
+      barraca.idBarraca
+    ) {
+      this.barracaService.deleteBarraca(barraca.idBarraca).subscribe(
+        (response: void) => {
+          this.getBarracas();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+    }
   }
 }

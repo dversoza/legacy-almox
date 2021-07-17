@@ -5,6 +5,8 @@ import { ListarBarracaComponent } from './listar-barraca/listar-barraca.componen
 import { EditarBarracaComponent } from './editar-barraca/editar-barraca.component';
 import { CriarBarracaComponent } from './criar-barraca/criar-barraca.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,7 @@ import { RouterModule } from '@angular/router';
     EditarBarracaComponent,
     CriarBarracaComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule, FormsModule],
   providers: [BarracaService],
 })
 export class BarracasModule {}

@@ -1,20 +1,31 @@
-<h1>Barracas</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Responsável</th>
-      <th>Contato</th>
-      <th>Criar</th>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Responsável</th>
+      <th scope="col">Contato</th>
+      <th class="text-center" scope="col">
+        <a [routerLink]="['nova']" class="btn btn-success" href="#"
+          ><i class="fa fa-plus"></i> Nova</a
+        >
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let barraca of barracas">
+      <th scope="row">{{ barraca.idBarraca }}</th>
       <td>{{ barraca.nome }}</td>
       <td>{{ barraca.responsavel }}</td>
       <td>{{ barraca.contato }}</td>
-      <td>Editar || Excluir</td>
+      <td class="text-center">
+        <a href="#" [routerLink]="['editar', barraca.idBarraca]">Editar</a> |
+        <a href="#" (click)="excluir($event, barraca)">Excluir</a>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<div class="alert alert-danger" *ngIf="!barracas || barracas?.length == 0">
+  Nenhuma barraca encontrada
+</div>

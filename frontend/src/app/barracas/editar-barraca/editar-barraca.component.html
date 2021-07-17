@@ -1,1 +1,38 @@
-<p>editar-barraca works!</p>
+<h1>Editar barraca: {{ barraca?.nome }}</h1>
+
+<form #formBarraca="ngForm" *ngIf="barraca">
+  <div class="form-group">
+    <label for="nome">Nome: </label>
+    <input
+      class="form-control"
+      [(ngModel)]="barraca.nome"
+      #nome="ngModel"
+      name="nome"
+      type="text"
+      placeholder="Digite o nome da barraca"
+    />
+  </div>
+  <div class="form-group">
+    <label for="nome">Responsável: </label>
+    <input
+      class="form-control"
+      [(ngModel)]="barraca.responsavel"
+      #responsavel="ngModel"
+      name="responsavel"
+      type="text"
+      placeholder="Digite o nome do responsável pela barraca"
+    />
+  </div>
+  <div class="form-group">
+    <label for="nome">Contato: </label>
+    <input
+      class="form-control"
+      [(ngModel)]="barraca.contato"
+      #contato="ngModel"
+      name="contato"
+      type="text"
+      placeholder="Digite o contato da barraca"
+    />
+  </div>
+  <button type="button" (click)="atualizar(barraca)">Criar</button>
+</form>
