@@ -9,7 +9,7 @@ import dvtech.dev.almoxcontrol.models.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
-    void deletePessoaByIdPessoa(Integer idPessoa);
-
     Optional<Pessoa> findPessoaByIdPessoa(Integer idPessoa);
+
+    Optional<Pessoa> findPessoaByDocumento(String documento);
 }

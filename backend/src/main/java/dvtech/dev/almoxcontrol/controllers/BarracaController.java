@@ -47,7 +47,7 @@ public class BarracaController {
     }
 
     @Transactional
-    @DeleteMapping("/excluir/{idBarraca}")
+    @DeleteMapping(path = "/excluir/{idBarraca}")
     public ResponseEntity<?> deleteBarraca(
             @PathVariable("idBarraca") Integer idBarraca) {
         barracaService.deleteBarraca(idBarraca);

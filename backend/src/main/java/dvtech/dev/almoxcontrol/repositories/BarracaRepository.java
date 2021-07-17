@@ -9,8 +9,7 @@ import dvtech.dev.almoxcontrol.models.Barraca;
 
 @Repository
 public interface BarracaRepository extends JpaRepository<Barraca, Integer> {
-    void deleteBarracaByIdBarraca(Integer idBarraca);
-
     Optional<Barraca> findBarracaByIdBarraca(Integer idBarraca);
 
+    Optional<Barraca> findBarracaByNome(String nome);
 }

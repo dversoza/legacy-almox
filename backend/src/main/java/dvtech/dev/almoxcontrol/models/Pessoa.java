@@ -24,10 +24,12 @@ public class Pessoa implements Serializable {
     private Integer idPessoa;
     private String nome;
     private Boolean pessoaFisica;
+
+    @Column(unique = true)
     private String documento;
     private String telefone;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "barraca")
     @JsonIgnoreProperties("responsavel")
     private Barraca barraca;

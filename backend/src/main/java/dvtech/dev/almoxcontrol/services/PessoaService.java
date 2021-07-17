@@ -1,6 +1,7 @@
 package dvtech.dev.almoxcontrol.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,24 @@ public class PessoaService {
     }
 
     public Pessoa addPessoa(Pessoa pessoa) {
-        return pessoaRepository.save(pessoa);
+        Optional<Pessoa> pessoaOptional = pessoaRepository
+                .findPessoaByDocumento(pessoa.getDocumento());
+        if (pessoaOptional.isPresent()) {
+            throw new IllegalStateException(
+                    "Já existe uma pessoa cadastrada para o documento especificado!");
+        } else {
+            return pessoaRepository.save(pessoa);
+        }
     }
 
     public void deletePessoa(Integer idPessoa) {
-        pessoaRepository.deletePessoaByIdPessoa(idPessoa);
+        if (!pessoaRepository.existsById(idPessoa)) {
+            throw new IllegalStateException(
+                    "Não existe uma pessoa cadastrada com o id " + idPessoa
+                            + ".");
+        } else {
+            pessoaRepository.deleteById(idPessoa);
+        }
     }
 
     public List<Pessoa> findAllPessoas() {

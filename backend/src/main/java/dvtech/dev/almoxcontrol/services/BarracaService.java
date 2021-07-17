@@ -1,6 +1,7 @@
 package dvtech.dev.almoxcontrol.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,15 @@ public class BarracaService {
     }
 
     public Barraca addBarraca(Barraca barraca) {
-        return barracaRepository.save(barraca);
+        Optional<Barraca> barracaOptional = barracaRepository
+                .findBarracaByNome(barraca.getNome());
+        if (barracaOptional.isPresent()) {
+            throw new IllegalStateException("A barraca \"" + barraca.getNome()
+                    + "\" já existe e está cadastarda com o id "
+                    + barracaOptional.get().getIdBarraca() + ".");
+        } else {
+            return barracaRepository.save(barraca);
+        }
     }
 
     public List<Barraca> findAllBarracas() {
@@ -31,7 +40,12 @@ public class BarracaService {
     }
 
     public void deleteBarraca(Integer idBarraca) {
-        barracaRepository.deleteBarracaByIdBarraca(idBarraca);
+        if (!barracaRepository.existsById(idBarraca)) {
+            throw new IllegalStateException(
+                    "Não existe uma barraca com o id " + idBarraca + ".");
+        } else {
+            barracaRepository.deleteById(idBarraca);
+        }
     }
 
     public Barraca findBarracaById(Integer idBarraca) {
