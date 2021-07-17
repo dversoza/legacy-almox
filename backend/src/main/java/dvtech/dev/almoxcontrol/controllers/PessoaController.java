@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import dvtech.dev.almoxcontrol.services.PessoaService;
 public class PessoaController {
     private final PessoaService pessoaService;
 
+    @Autowired
     public PessoaController(PessoaService pessoaService) {
         this.pessoaService = pessoaService;
     }

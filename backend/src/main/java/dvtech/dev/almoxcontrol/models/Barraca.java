@@ -9,13 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table
 public class Barraca implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "barraca_seq", sequenceName = "barraca_seq", allocationSize = 1)
+    @GeneratedValue(generator = "barraca_seq", strategy = GenerationType.SEQUENCE)
     @Column(nullable = false, updatable = false, unique = true)
     private Integer idBarraca;
     private String nome;

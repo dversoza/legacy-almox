@@ -2,6 +2,7 @@ package dvtech.dev.almoxcontrol.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,10 +12,11 @@ import dvtech.dev.almoxcontrol.services.BarracaService;
 import dvtech.dev.almoxcontrol.models.Barraca;
 
 @RestController
-@RequestMapping("/barracas")
+@RequestMapping(path = "/barracas")
 public class BarracaController {
     private final BarracaService barracaService;
 
+    @Autowired
     public BarracaController(BarracaService barracaService) {
         this.barracaService = barracaService;
     }
