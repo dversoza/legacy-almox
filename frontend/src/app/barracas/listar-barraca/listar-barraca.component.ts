@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Barraca } from 'src/app/models/barraca.model';
+import { Barraca } from 'src/app/shared/models/barraca.model';
 import { BarracaService } from '../services/barraca.service';
 
 @Component({

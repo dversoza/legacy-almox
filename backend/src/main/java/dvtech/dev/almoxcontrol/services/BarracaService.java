@@ -7,35 +7,35 @@ import org.springframework.stereotype.Service;
 
 import dvtech.dev.almoxcontrol.exceptions.BarracaNotFoundException;
 import dvtech.dev.almoxcontrol.models.Barraca;
-import dvtech.dev.almoxcontrol.repos.BarracaRepo;
+import dvtech.dev.almoxcontrol.repositories.BarracaRepository;
 
 @Service
 public class BarracaService {
-    private final BarracaRepo barracaRepo;
+    private final BarracaRepository barracaRepository;
 
     @Autowired
-    public BarracaService(BarracaRepo barracaRepo) {
-        this.barracaRepo = barracaRepo;
+    public BarracaService(BarracaRepository barracaRepo) {
+        this.barracaRepository = barracaRepo;
     }
 
     public Barraca addBarraca(Barraca barraca) {
-        return barracaRepo.save(barraca);
+        return barracaRepository.save(barraca);
     }
 
     public List<Barraca> findAllBarracas() {
-        return barracaRepo.findAll();
+        return barracaRepository.findAll();
     }
 
     public Barraca updateBarraca(Barraca barraca) {
-        return barracaRepo.save(barraca);
+        return barracaRepository.save(barraca);
     }
 
     public void deleteBarraca(Integer idBarraca) {
-        barracaRepo.deleteBarracaByIdBarraca(idBarraca);
+        barracaRepository.deleteBarracaByIdBarraca(idBarraca);
     }
 
     public Barraca findBarracaById(Integer idBarraca) {
-        return barracaRepo.findBarracaByIdBarraca(idBarraca)
+        return barracaRepository.findBarracaByIdBarraca(idBarraca)
                 .orElseThrow(() -> new BarracaNotFoundException(
                         "Barraca não encontrada pelo id" + idBarraca));
     }

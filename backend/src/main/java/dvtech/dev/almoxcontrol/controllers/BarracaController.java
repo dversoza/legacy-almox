@@ -1,4 +1,4 @@
-package dvtech.dev.almoxcontrol.resources;
+package dvtech.dev.almoxcontrol.controllers;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import dvtech.dev.almoxcontrol.models.Barraca;
 
 @RestController
 @RequestMapping("/barracas")
-public class BarracaResource {
+public class BarracaController {
     private final BarracaService barracaService;
 
-    public BarracaResource(BarracaService barracaService) {
+    public BarracaController(BarracaService barracaService) {
         this.barracaService = barracaService;
     }
 
@@ -38,7 +38,7 @@ public class BarracaResource {
         return new ResponseEntity<>(newBarraca, HttpStatus.CREATED);
     }
 
-    @PutMapping("/atualizar")
+    @PutMapping("/editar")
     public ResponseEntity<Barraca> updateBarraca(@RequestBody Barraca barraca) {
         Barraca updatedBarraca = barracaService.updateBarraca(barraca);
         return new ResponseEntity<>(updatedBarraca, HttpStatus.OK);

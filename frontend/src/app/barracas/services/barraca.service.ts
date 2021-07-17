@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Barraca } from 'src/app/models/barraca.model';
+import { Barraca } from 'src/app/shared/models/barraca.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class BarracaService {
   }
 
   public updateBarraca(barraca: Barraca): Observable<Barraca> {
-    return this.http.put<Barraca>(`${this.apiBarracasUrl}/atualizar`, barraca);
+    return this.http.put<Barraca>(`${this.apiBarracasUrl}/editar`, barraca);
   }
 
   public deleteBarraca(idBarraca: number): Observable<void> {

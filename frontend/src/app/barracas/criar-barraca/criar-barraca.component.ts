@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Barraca } from 'src/app/models/barraca.model';
+import { Barraca } from 'src/app/shared/models/barraca.model';
 import { BarracaService } from '../services/barraca.service';
 
 @Component({
