@@ -1,4 +1,4 @@
-import { Barraca } from './barraca';
+import { Barraca } from './barraca.model';
 
 describe('Barraca', () => {
   it('should create an instance', () => {

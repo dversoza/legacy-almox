@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PessoaService } from 'src/app/pessoas/services/pessoa.service';
 import { Barraca } from 'src/app/shared/models/barraca.model';
+import { Pessoa } from 'src/app/shared/models/pessoa.model';
 import { BarracaService } from '../services/barraca.service';
 
 @Component({
@@ -13,9 +15,11 @@ import { BarracaService } from '../services/barraca.service';
 export class EditarBarracaComponent implements OnInit {
   @ViewChild('formBarraca') formBarraca!: NgForm;
   public barraca?: Barraca;
+  public responsaveis?: Pessoa[];
 
   constructor(
     private barracaService: BarracaService,
+    private pessoaService: PessoaService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -30,7 +34,16 @@ export class EditarBarracaComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pessoaService.getPessoas().subscribe(
+      (response: Pessoa[]) => {
+        this.responsaveis = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
   public atualizar(barraca: Barraca) {
     if (this.formBarraca.form.valid) {

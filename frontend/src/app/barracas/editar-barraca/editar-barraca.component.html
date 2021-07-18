@@ -14,14 +14,16 @@
   </div>
   <div class="form-group">
     <label for="nome">Responsável: </label>
-    <input
-      class="form-control"
+    <select
       [(ngModel)]="barraca.responsavel"
-      #responsavel="ngModel"
       name="responsavel"
-      type="text"
-      placeholder="Digite o nome do responsável pela barraca"
-    />
+      id="responsavel_select"
+      class="form-select"
+    >
+      <option *ngFor="let responsavel of responsaveis" [ngValue]="responsavel">
+        {{ responsavel.nome }}
+      </option>
+    </select>
   </div>
   <div class="form-group">
     <label for="nome">Contato: </label>
@@ -34,5 +36,5 @@
       placeholder="Digite o contato da barraca"
     />
   </div>
-  <button type="button" (click)="atualizar(barraca)">Criar</button>
+  <button type="button" (click)="atualizar(barraca)">Salvar</button>
 </form>

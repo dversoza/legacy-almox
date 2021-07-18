@@ -1,3 +1,20 @@
+<div class="d-flex justify-content-between">
+  <h1>Barracas</h1>
+  <div>
+    <form class="d-flex">
+      <div class="form-group">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Digite aqui ..."
+          aria-label="Search"
+        />
+      </div>
+      <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+    </form>
+  </div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -5,7 +22,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Responsável</th>
       <th scope="col">Contato</th>
-      <th class="text-center" scope="col">
+      <th class="text-center">
         <a [routerLink]="['nova']" class="btn btn-success" href="#"
           ><i class="fa fa-plus"></i> Nova</a
         >
@@ -16,11 +33,21 @@
     <tr *ngFor="let barraca of barracas">
       <th scope="row">{{ barraca.idBarraca }}</th>
       <td>{{ barraca.nome }}</td>
-      <td>{{ barraca.responsavel }}</td>
+      <td>{{ barraca.responsavel?.nome }}</td>
       <td>{{ barraca.contato }}</td>
       <td class="text-center">
-        <a href="#" [routerLink]="['editar', barraca.idBarraca]">Editar</a> |
-        <a href="#" (click)="excluir($event, barraca)">Excluir</a>
+        <a
+          class="btn btn-xs btn-info"
+          href="#"
+          [routerLink]="['editar', barraca.idBarraca]"
+          ><i class="fa fa-edit" aria-hidden="true"></i> Editar</a
+        >
+        <a
+          class="btn btn-xs btn-danger"
+          href="#"
+          (click)="excluir($event, barraca)"
+          ><i class="fa fa-times" aria-hidden="true"></i> Excluir</a
+        >
       </td>
     </tr>
   </tbody>
