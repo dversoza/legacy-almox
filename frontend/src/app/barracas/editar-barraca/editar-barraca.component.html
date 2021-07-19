@@ -1,40 +1,88 @@
-<h1>Editar barraca: {{ barraca?.nome }}</h1>
-
-<form #formBarraca="ngForm" *ngIf="barraca">
-  <div class="form-group">
-    <label for="nome">Nome: </label>
-    <input
-      class="form-control"
-      [(ngModel)]="barraca.nome"
-      #nome="ngModel"
-      name="nome"
-      type="text"
-      placeholder="Digite o nome da barraca"
-    />
+<div
+  id="updateBarracaModal"
+  class="modal fade"
+  tabindex="-1"
+  aria-labelledby="updateBarracaModalLabel"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateBarracaModalLabel">
+          Editar Barraca {{ barraca.nome }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #editarBarracaForm="ngForm">
+          <div class="form-group">
+            <label for="nome">Nome: </label>
+            <input
+              class="form-control"
+              ngModel="{{ barraca.nome }}"
+              #nome="ngModel"
+              name="nome"
+              type="text"
+              placeholder="Digite o nome da barraca"
+            />
+          </div>
+          <div class="form-group">
+            <label for="nome">Responsável: </label>
+            <select
+              ngModel
+              #name="ngModel"
+              name="responsavel"
+              id="responsavel_select"
+              class="form-select"
+            >
+              <option
+                *ngFor="let responsavel of responsaveis"
+                [selected]="
+                  responsavel.idPessoa === barraca.responsavel?.idPessoa
+                "
+                [ngValue]="responsavel"
+              >
+                {{ responsavel.nome }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nome">Contato: </label>
+            <input
+              class="form-control"
+              ngModel="{{ barraca.contato }}"
+              #contato="ngModel"
+              name="contato"
+              type="text"
+              placeholder="Digite o contato da barraca"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="editar-barraca-form-exit"
+          data-bs-dismiss="modal"
+        >
+          Fechar
+        </button>
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="btn btn-primary"
+          (click)="atualizarBarraca(editarBarracaForm.value)"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="nome">Responsável: </label>
-    <select
-      [(ngModel)]="barraca.responsavel"
-      name="responsavel"
-      id="responsavel_select"
-      class="form-select"
-    >
-      <option *ngFor="let responsavel of responsaveis" [ngValue]="responsavel">
-        {{ responsavel.nome }}
-      </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="nome">Contato: </label>
-    <input
-      class="form-control"
-      [(ngModel)]="barraca.contato"
-      #contato="ngModel"
-      name="contato"
-      type="text"
-      placeholder="Digite o contato da barraca"
-    />
-  </div>
-  <button type="button" (click)="atualizar(barraca)">Salvar</button>
-</form>
+</div>
