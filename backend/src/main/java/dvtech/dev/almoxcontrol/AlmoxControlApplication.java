@@ -32,7 +32,7 @@ public class AlmoxControlApplication {
 				"Access-Control-Allow-Origin", "Access-Control-Allow-Origin",
 				"Access-Control-Allow-Credentials"));
 		corsConfiguration.setAllowedMethods(
-				Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+				Arrays.asList("GET", "POST", "PUT", "DELETE"));
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",
 				corsConfiguration);
