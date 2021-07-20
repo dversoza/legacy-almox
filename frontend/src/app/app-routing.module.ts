@@ -8,8 +8,8 @@ const routes: Routes = [
     path: 'barracas',
     children: [
       { path: '', component: barracas.ListarBarracaComponent },
-      { path: 'nova', component: barracas.CriarBarracaComponent },
-      { path: 'editar/:id', component: barracas.EditarBarracaComponent },
+      { path: 'nova', component: barracas.ListarBarracaComponent },
+      { path: 'editar/:id', component: barracas.ListarBarracaComponent },
       { path: 'excluir/:id', component: barracas.ListarBarracaComponent },
     ],
   },

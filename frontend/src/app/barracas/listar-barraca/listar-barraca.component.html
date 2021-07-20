@@ -99,6 +99,7 @@
               name="nome"
               type="text"
               placeholder="Digite o nome da barraca"
+              required
             />
           </div>
           <div class="form-group">
@@ -109,6 +110,7 @@
               name="responsavel"
               id="responsavel_select"
               class="form-select"
+              required
             >
               <option
                 *ngFor="let responsavel of responsaveis"
@@ -127,6 +129,7 @@
               name="contato"
               type="text"
               placeholder="Digite o contato da barraca"
+              required
             />
           </div>
         </form>
@@ -176,6 +179,12 @@
       </div>
       <div class="modal-body">
         <form #editarBarracaForm="ngForm">
+          <input
+            ngModel="{{ editBarraca?.idBarraca }}"
+            #idBarraca="ngModel"
+            name="idBarraca"
+            hidden
+          />
           <div class="form-group">
             <label for="nome">Nome: </label>
             <input
@@ -185,6 +194,7 @@
               name="nome"
               type="text"
               placeholder="Digite o nome da barraca"
+              required
             />
           </div>
           <div class="form-group">
@@ -195,15 +205,16 @@
               name="responsavel"
               id="responsavel_select"
               class="form-select"
+              required
             >
               <option
                 *ngFor="let responsavel of responsaveis"
-                [selected]="
-                  responsavel.idPessoa === editBarraca?.responsavel?.idPessoa
-                "
                 [ngValue]="responsavel"
+                [selected]="
+                  responsavel?.idPessoa === editBarraca?.responsavel?.idPessoa
+                "
               >
-                {{ responsavel.nome }}
+                {{ responsavel?.nome }}
               </option>
             </select>
           </div>
@@ -216,6 +227,7 @@
               name="contato"
               type="text"
               placeholder="Digite o contato da barraca"
+              required
             />
           </div>
         </form>
