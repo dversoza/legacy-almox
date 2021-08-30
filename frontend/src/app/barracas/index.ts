@@ -1,2 +1,2 @@
 export * from './barracas.module';
-export * from './listar-barraca';
+export * from './crud-barraca';

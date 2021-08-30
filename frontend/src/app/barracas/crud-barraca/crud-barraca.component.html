@@ -44,7 +44,7 @@
   </thead>
   <tbody class="align-middle">
     <tr *ngFor="let barraca of barracas">
-      <th scope="row">{{ barraca.idBarraca }}</th>
+      <th scope="row">{{ barraca.id }}</th>
       <td>{{ barraca.nome }}</td>
       <td>{{ barraca.responsavel?.nome }}</td>
       <td>{{ barraca.contato }}</td>
@@ -114,7 +114,7 @@
             >
               <option
                 *ngFor="let responsavel of responsaveis"
-                [ngValue]="responsavel"
+                [ngValue]="responsavel.id"
               >
                 {{ responsavel.nome }}
               </option>
@@ -180,9 +180,9 @@
       <div class="modal-body">
         <form #editarBarracaForm="ngForm">
           <input
-            ngModel="{{ editBarraca?.idBarraca }}"
-            #idBarraca="ngModel"
-            name="idBarraca"
+            ngModel="{{ editBarraca?.id }}"
+            #id="ngModel"
+            name="id"
             hidden
           />
           <div class="form-group">
@@ -201,7 +201,7 @@
             <label for="nome">Responsável: </label>
             <select
               ngModel
-              #name="ngModel"
+              #responsavel="ngModel"
               name="responsavel"
               id="responsavel_select"
               class="form-select"
@@ -209,10 +209,8 @@
             >
               <option
                 *ngFor="let responsavel of responsaveis"
-                [ngValue]="responsavel"
-                [selected]="
-                  responsavel?.idPessoa === editBarraca?.responsavel?.idPessoa
-                "
+                [ngValue]="responsavel.id"
+                [selected]="responsavel.id === editBarraca?.responsavel?.id"
               >
                 {{ responsavel?.nome }}
               </option>

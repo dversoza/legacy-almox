@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListarPessoasComponent } from './listar-pessoas.component';
+import { CrudUnidadeMedidaComponent } from './crud-unidade-medida.component';
 
-describe('ListarPessoasComponent', () => {
-  let component: ListarPessoasComponent;
-  let fixture: ComponentFixture<ListarPessoasComponent>;
+describe('CrudUnidadeMedidaComponent', () => {
+  let component: CrudUnidadeMedidaComponent;
+  let fixture: ComponentFixture<CrudUnidadeMedidaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListarPessoasComponent ]
+      declarations: [ CrudUnidadeMedidaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListarPessoasComponent);
+    fixture = TestBed.createComponent(CrudUnidadeMedidaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

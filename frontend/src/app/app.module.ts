@@ -7,10 +7,17 @@ import { AppComponent } from './app.component';
 import { BarracasModule } from './barracas';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PessoasModule } from './pessoas';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, BarracasModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BarracasModule,
+    PessoasModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

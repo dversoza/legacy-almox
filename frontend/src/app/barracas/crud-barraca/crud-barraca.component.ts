@@ -7,11 +7,11 @@ import { Pessoa } from 'src/app/shared/models/pessoa.model';
 import { BarracaService } from '../services/barraca.service';
 
 @Component({
-  selector: 'app-listar-barraca',
-  templateUrl: './listar-barraca.component.html',
-  styleUrls: ['./listar-barraca.component.css'],
+  selector: 'app-crud-barraca',
+  templateUrl: './crud-barraca.component.html',
+  styleUrls: ['./crud-barraca.component.css'],
 })
-export class ListarBarracaComponent implements OnInit {
+export class CrudBarracaComponent implements OnInit {
   public barracas!: Barraca[];
   public responsaveis!: Pessoa[];
   public editBarraca!: Barraca;
@@ -92,9 +92,9 @@ export class ListarBarracaComponent implements OnInit {
     $event.preventDefault();
     if (
       confirm(`Tem certeza que deseja excluir a barraca ${barraca.nome}?`) &&
-      barraca.idBarraca
+      barraca.id
     ) {
-      this.barracaService.deleteBarraca(barraca.idBarraca).subscribe(
+      this.barracaService.deleteBarraca(barraca.id).subscribe(
         (response: void) => {
           this.listarBarracas();
         },

@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import * as barracas from './barracas/';
+import { CrudBarracaComponent } from './barracas';
+import { CrudPessoaComponent } from './pessoas';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'barracas', pathMatch: 'full' },
+  { path: '', redirectTo: 'pessoas', pathMatch: 'full' },
   {
     path: 'barracas',
-    children: [
-      { path: '', component: barracas.ListarBarracaComponent },
-      { path: 'nova', component: barracas.ListarBarracaComponent },
-      { path: 'editar/:id', component: barracas.ListarBarracaComponent },
-      { path: 'excluir/:id', component: barracas.ListarBarracaComponent },
-    ],
+    children: [{ path: '', component: CrudBarracaComponent }],
   },
+  {
+    path: 'pessoas',
+    children: [{ path: '', component: CrudPessoaComponent }],
+  },
+
   { path: '**', redirectTo: 'barracas' },
 ];
 
