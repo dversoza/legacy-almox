@@ -1,9 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { PessoaService } from 'src/app/pessoas/services/pessoa.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Barraca } from 'src/app/shared/models/barraca.model';
-import { Pessoa } from 'src/app/shared/models/pessoa.model';
+import { ModalBarracaComponent } from '../modal-barraca';
 import { BarracaService } from '../services/barraca.service';
 
 @Component({
@@ -13,17 +12,14 @@ import { BarracaService } from '../services/barraca.service';
 })
 export class CrudBarracaComponent implements OnInit {
   public barracas!: Barraca[];
-  public responsaveis!: Pessoa[];
-  public editBarraca!: Barraca;
 
   constructor(
     private barracaService: BarracaService,
-    private pessoaService: PessoaService
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
     this.listarBarracas();
-    this.listarResponsaveis();
   }
 
   public listarBarracas(): void {
@@ -37,40 +33,9 @@ export class CrudBarracaComponent implements OnInit {
     );
   }
 
-  public listarResponsaveis(): void {
-    this.pessoaService.getPessoas().subscribe(
-      (response: Pessoa[]) => {
-        this.responsaveis = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  public criarBarraca(form: NgForm): void {
-    document.getElementById('criar-barraca-form-exit')?.click();
-    this.barracaService.addBarraca(form.value).subscribe(
-      (response: Barraca) => {
-        this.listarBarracas();
-        form.reset();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  public atualizarBarraca(barraca: Barraca): void {
-    document.getElementById('editar-barraca-form-exit')?.click();
-    this.barracaService.updateBarraca(barraca).subscribe(
-      (response: Barraca) => {
-        this.listarBarracas();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+  public modalBarraca(barraca?: Barraca) {
+    const modalRef = this.modalService.open(ModalBarracaComponent);
+    modalRef.componentInstance.barraca = barraca;
   }
 
   public pesquisarBarraca(key: string): void {

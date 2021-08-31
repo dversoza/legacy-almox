@@ -8,15 +8,23 @@ import { BarracasModule } from './barracas';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PessoasModule } from './pessoas';
+import { HomepageComponent } from './homepage/homepage.component';
+import { UmsModule } from './ums';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    HomepageComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BarracasModule,
     PessoasModule,
-    HttpClientModule,
+    UmsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

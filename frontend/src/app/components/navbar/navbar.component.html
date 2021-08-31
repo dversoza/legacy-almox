@@ -1,6 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav
+  class="navbar navbar-expand-sm navbar-dark"
+  style="background-color: #013357"
+>
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Almox Control</a>
+    <img
+      src="assets/nsaLogo.svg"
+      alt="Nossa Senhora Aparecida"
+      style="height: 50px; fill: azure"
+    />
+    <a class="navbar-brand" href="#">Almoxarifado Catedral</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -19,19 +27,9 @@
             class="nav-link"
             [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }"
-            [routerLink]="['/']"
-            href="#"
-            >Início</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }"
             [routerLink]="['movimentacoes']"
             href="#"
-            >Movimentações</a
+            ><i class="fas fa-shipping-fast"></i> Movimentações</a
           >
         </li>
         <li class="nav-item">
@@ -41,7 +39,7 @@
             [routerLinkActiveOptions]="{ exact: true }"
             [routerLink]="['barracas']"
             href="#"
-            >Barracas</a
+            ><i class="fas fa-store"></i> Barracas</a
           >
         </li>
         <li class="nav-item">
@@ -51,7 +49,7 @@
             [routerLinkActiveOptions]="{ exact: true }"
             [routerLink]="['produtos']"
             href="#"
-            >Produtos</a
+            ><i class="fas fa-dolly"></i> Produtos</a
           >
         </li>
         <li class="nav-item">
@@ -61,7 +59,7 @@
             [routerLinkActiveOptions]="{ exact: true }"
             [routerLink]="['pessoas']"
             href="#"
-            >Pessoas</a
+            ><i class="fas fa-user"></i> Pessoas</a
           >
         </li>
       </ul>

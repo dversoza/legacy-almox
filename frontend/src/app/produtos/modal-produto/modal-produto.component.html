@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h5 class="modal-title">
-    {{ pessoa.nome! ? pessoa.nome : "Criar Pessoa" }}
+    {{ produto.id ? produto.nome : "Cadastrar Produto" }}
   </h5>
   <button
     type="button"
@@ -11,74 +11,63 @@
 </div>
 
 <div class="modal-body">
-  <form #pessoaForm="ngForm">
+  <form #produtoForm="ngForm">
     <div class="form-group">
       <label for="nome">Nome: </label>
       <input
-        [(ngModel)]="pessoa.nome"
+        [(ngModel)]="produto.nome"
         #nome="ngModel"
         class="form-control"
         id="nome_input"
         name="nome"
         type="text"
-        placeholder="Digite o nome da pessoa"
+        placeholder="Digite o nome do produto"
         required
       />
     </div>
     <div class="form-group">
-      <label for="documento">Documento: </label>
+      <label for="descricao">Descrição: </label>
       <input
+        [(ngModel)]="produto.descricao"
+        #descricao="ngModel"
         class="form-control"
-        [(ngModel)]="pessoa.documento"
-        #documento="ngModel"
-        name="documento"
+        id="descricao_input"
+        name="descricao"
         type="text"
-        placeholder="Digite o documento da pessoa"
-        required
+        placeholder="Digite uma descrição para o produto"
       />
     </div>
     <div class="form-group">
-      <label for="telefone">Telefone: </label>
+      <label for="imagemURL">Link da Imagem: </label>
       <input
+        [(ngModel)]="produto.imagemURL"
+        #imagemURL="ngModel"
         class="form-control"
-        [(ngModel)]="pessoa.telefone"
-        #telefone="ngModel"
-        name="telefone"
+        id="imagemURL_input"
+        name="imagemURL"
         type="text"
-        placeholder="Digite o telefone da pessoa"
-        required
+        placeholder="Digite o link da imagem do produto"
       />
     </div>
     <div class="form-group">
-      <label for="barraca">Barraca: </label>
+      <label for="unidadeMedida">Unidade de Medida: </label>
       <ng-select
-        [items]="barracas"
+        [items]="ums"
         bindLabel="nome"
-        [(ngModel)]="pessoa.barraca"
-        placeholder="Selecione a barraca"
-        name="barraca"
+        [(ngModel)]="produto.unidadeMedida"
+        #unidadeMedida="ngModel"
+        name="unidadeMedida"
+        placeholder="Selecione a unidade de medida"
+        required
       >
       </ng-select>
-    </div>
-    <div class="form-group">
-      <label for="nome">Pessoa Física: </label>
-      <input
-        style="margin-left: 10px"
-        [(ngModel)]="pessoa.pessoaFisica"
-        #fisica="ngModel"
-        type="checkbox"
-        name="fisica"
-        value="true"
-        id="fisica_input"
-        class="form-check-input"
-      />
     </div>
   </form>
   <div class="d-grid gap-2">
     <button
-      [disabled]="!pessoaForm.form.valid"
-      type="button"
+      [disabled]="!produtoForm.form.valid"
       style="margin-top: 20px"
+      type="button"
       class="btn btn-primary"
       (click)="submitForm()"
     >

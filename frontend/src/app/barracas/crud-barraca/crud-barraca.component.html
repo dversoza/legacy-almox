@@ -13,17 +13,16 @@
         placeholder="Pesquisar barraca ..."
         aria-label="Search"
       />
-      <a
+      <button
         class="btn btn-secondary d-flex align-items-center"
-        href="#"
         (click)="listarBarracas()"
         style="margin: 0 10px"
-        ><i class="fa fa-sync" style="margin-right: 5px"></i> Atualizar</a
       >
+        <i class="fa fa-sync" style="margin-right: 5px"></i> Atualizar
+      </button>
       <button
         class="btn btn-success d-flex align-items-center"
-        data-bs-toggle="modal"
-        data-bs-target="#createBarracaModal"
+        (click)="modalBarraca()"
         type="button"
       >
         <i class="fa fa-plus" style="margin-right: 5px"></i> Nova
@@ -49,12 +48,7 @@
       <td>{{ barraca.responsavel?.nome }}</td>
       <td>{{ barraca.contato }}</td>
       <td class="text-center">
-        <button
-          class="btn btn-xs btn-info"
-          (click)="editBarraca = barraca"
-          data-bs-toggle="modal"
-          data-bs-target="#updateBarracaModal"
-        >
+        <button class="btn btn-xs btn-info" (click)="modalBarraca(barraca)">
           <i class="fa fa-edit" aria-hidden="true"></i> Editar
         </button>
         <a
@@ -68,189 +62,6 @@
     </tr>
   </tbody>
 </table>
-
-<div
-  id="createBarracaModal"
-  class="modal fade"
-  tabindex="-1"
-  aria-labelledby="createBarracaModalLabel"
-  role="dialog"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="createBarracaModalLabel">Criar Barraca</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form #criarBarracaForm="ngForm">
-          <div class="form-group">
-            <label for="nome">Nome: </label>
-            <input
-              class="form-control"
-              ngModel
-              #nome="ngModel"
-              name="nome"
-              type="text"
-              placeholder="Digite o nome da barraca"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="nome">Responsável: </label>
-            <select
-              ngModel
-              #name="ngModel"
-              name="responsavel"
-              id="responsavel_select"
-              class="form-select"
-              required
-            >
-              <option
-                *ngFor="let responsavel of responsaveis"
-                [ngValue]="responsavel.id"
-              >
-                {{ responsavel.nome }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="nome">Contato: </label>
-            <input
-              class="form-control"
-              ngModel
-              #contato="ngModel"
-              name="contato"
-              type="text"
-              placeholder="Digite o contato da barraca"
-              required
-            />
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          id="criar-barraca-form-exit"
-          data-bs-dismiss="modal"
-        >
-          Fechar
-        </button>
-        <button
-          type="button"
-          data-bs-dismiss="modal"
-          class="btn btn-primary"
-          (click)="criarBarraca(criarBarracaForm)"
-        >
-          Salvar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div
-  id="updateBarracaModal"
-  class="modal fade"
-  tabindex="-1"
-  aria-labelledby="updateBarracaModalLabel"
-  role="dialog"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="updateBarracaModalLabel">
-          Editar Barraca {{ editBarraca?.nome }}
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form #editarBarracaForm="ngForm">
-          <input
-            ngModel="{{ editBarraca?.id }}"
-            #id="ngModel"
-            name="id"
-            hidden
-          />
-          <div class="form-group">
-            <label for="nome">Nome: </label>
-            <input
-              class="form-control"
-              ngModel="{{ editBarraca?.nome }}"
-              #nome="ngModel"
-              name="nome"
-              type="text"
-              placeholder="Digite o nome da barraca"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="nome">Responsável: </label>
-            <select
-              ngModel
-              #responsavel="ngModel"
-              name="responsavel"
-              id="responsavel_select"
-              class="form-select"
-              required
-            >
-              <option
-                *ngFor="let responsavel of responsaveis"
-                [ngValue]="responsavel.id"
-                [selected]="responsavel.id === editBarraca?.responsavel?.id"
-              >
-                {{ responsavel?.nome }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="nome">Contato: </label>
-            <input
-              class="form-control"
-              ngModel="{{ editBarraca?.contato }}"
-              #contato="ngModel"
-              name="contato"
-              type="text"
-              placeholder="Digite o contato da barraca"
-              required
-            />
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          id="editar-barraca-form-exit"
-          data-bs-dismiss="modal"
-        >
-          Fechar
-        </button>
-        <button
-          type="button"
-          data-bs-dismiss="modal"
-          class="btn btn-primary"
-          (click)="atualizarBarraca(editarBarracaForm.value)"
-        >
-          Salvar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="alert alert-danger" *ngIf="!barracas || barracas?.length == 0">
   Nenhuma barraca encontrada

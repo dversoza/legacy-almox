@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Barraca } from 'src/app/shared/models/barraca.model';
 import { Pessoa } from 'src/app/shared/models/pessoa.model';
 import { ModalPessoaComponent } from '../modal-pessoa/modal-pessoa.component';
 import { PessoaService } from '../services/pessoa.service';
