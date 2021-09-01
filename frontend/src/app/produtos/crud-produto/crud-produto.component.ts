@@ -57,6 +57,9 @@ export class CrudProdutoComponent implements OnInit {
         results.push(produto);
       }
     }
+    if (key === '') {
+      this.listarProdutos();
+    }
     this.produtos = results;
   }
 }

@@ -47,19 +47,20 @@ export class ModalProdutoComponent implements OnInit {
   public submitForm() {
     if (this.produtoForm.valid) {
       if (this.type === ModalType.CREATE) {
-        this.produtoService
-          .addProduto(this.produto)
-          .subscribe((produto: Produto) => {
+        this.produtoService.addProduto(this.produto).subscribe(
+          () => {
             this.activeModal.close();
             parent.location.reload();
-          });
+          },
+          (error) => {
+            alert(error.message);
+          }
+        );
       } else {
-        this.produtoService
-          .updateProduto(this.produto)
-          .subscribe((produto: Produto) => {
-            this.activeModal.close();
-            parent.location.reload();
-          });
+        this.produtoService.updateProduto(this.produto).subscribe(() => {
+          this.activeModal.close();
+          parent.location.reload();
+        });
       }
     }
   }

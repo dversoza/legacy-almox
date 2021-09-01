@@ -60,7 +60,7 @@ export class CrudBarracaComponent implements OnInit {
       barraca.id
     ) {
       this.barracaService.deleteBarraca(barraca.id).subscribe(
-        (response: void) => {
+        () => {
           this.listarBarracas();
         },
         (error: HttpErrorResponse) => {
